@@ -6,6 +6,7 @@ __version__ = "0.3"
 
 import pandas as pd
 import numpy as np
+import joblib as joblib
 from sklearn.compose import ColumnTransformer,make_column_transformer, make_column_selector
 from sklearn.impute import SimpleImputer, KNNImputer
 from sklearn.pipeline import Pipeline, make_pipeline
@@ -28,7 +29,7 @@ y = df["cnt"]
 
 #This function defines a forward fill method for Null Values
 def ffill_missing(ser):
-    return ser.fillna(methods="ffill")
+    return ser.fillna(method="ffill")
 
 
 #Define the forward fill imputer
@@ -92,21 +93,6 @@ joblib.dump(reg, 'bikes.joblib')
 reg.score(X_test, y_test)
 
 y_pred = reg.predict(X_test)
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-sns.set()
-
-fig, ax = plt.subplots(figsize=(15, 5))
-
-df.loc[df["dteday"] < "2012-10"].set_index("instant")["cnt"].plot(ax=ax, label="Train")
-df.loc["2012-10" <= df["dteday"]].set_index("instant")["cnt"].plot(ax=ax, label="Test")
-
-pd.Series(y_pred, index=df.loc["2012-10" <= df["dteday"], "instant"]).plot(ax=ax, color="k", label="Prediction")
-
-ax.legend(loc=2, shadow=True, facecolor="0.97")
-ax.set_xlim(15100, 15500)
-
 
 X_train.head()
 
