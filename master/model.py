@@ -68,7 +68,7 @@ def year(data):
 
 #Defining the preprocessing pipeline object to apply all the data
 preprocessing = FeatureUnion([
-    ("is_weekend", FunctionTransformer(is_weekend)]),
+    ("is_weekend", FunctionTransformer(is_weekend)),
     ("year", FunctionTransformer(year)),
     ("column_transform", ct)
 ])
