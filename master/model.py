@@ -66,6 +66,13 @@ def year(data):
     # Our reference year is 2011, the beginning of the training dataset
     return (data["dteday"].dt.year - 2011).to_frame()
 
+#Defining the preprocessing pipeline object to apply all the data
+preprocessing = FeatureUnion([
+    ("is_weekend", FunctionTransformer(is_weekend)]),
+    ("year", FunctionTransformer(year)),
+    ("column_transform", ct)
+])
+
 
 reg = Pipeline([("preprocessing", preprocessing), ("model", RandomForestRegressor())])
 reg
