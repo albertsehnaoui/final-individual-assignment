@@ -28,7 +28,7 @@ y = df["cnt"]
 
 #This function defines a forward fill method for Null Values
 def ffill_missing(ser):
-    return ser.fillna(methods"ffill")
+    return ser.fillna(methods="ffill")
 
 
 #Define the forward fill imputer
@@ -89,6 +89,7 @@ y_pred = reg.predict(X_test)
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set()
+
 %matplotlib inline
 
 
