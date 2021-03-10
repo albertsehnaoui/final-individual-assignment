@@ -3,7 +3,6 @@ This package includes the train_and_persist and model_predict methods to perform
 """
 
 __version__ = "0.3"
-pip install --user --upgrade scikit-learn
 
 import pandas as pd
 import numpy as np
