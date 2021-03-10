@@ -90,9 +90,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set()
 
-%matplotlib inline
-
-
 fig, ax = plt.subplots(figsize=(15, 5))
 
 df.loc[df["dteday"] < "2012-10"].set_index("instant")["cnt"].plot(ax=ax, label="Train")
