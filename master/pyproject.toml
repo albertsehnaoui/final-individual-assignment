@@ -1,0 +1,14 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "model"
+author = "Albert Sehnaoui"
+author-email = "albertsehnaoui@student.ie.edu"
+requires = [
+    "pandas", 
+    "scikit-learn",
+    "flask",
+]
+
